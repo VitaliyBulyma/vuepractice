@@ -55,7 +55,44 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
   
 ````
   
-[] Lesson 3
+[x] Lesson 3
+  #### What I learned
+    - 		A boolean expression evaluates to true or false.
+		Examples
+		True => True
+		False => False
+		True && True => True
+		True && False => False
+		True || False => True
+		False || False => False
+    - 		Truthy or falsy values
+    		Examples
+		'Hello' => True
+		'' => False
+		211 => True
+		0 => False
+		-192 => True
+		null => False
+
+    
+````JS
+	<div id="app">
+		<span v-bind:class="{special:isSpecial, important:isImportant}">
+			look at me!
+		</span>
+	</div>
+	
+	<script>
+	var app = new Vue({
+		el: '#app',
+		data:{
+			isImportant:true,
+			isSpecial: false
+		}
+	});
+	</script>
+  
+````
 
 [] Lesson 4
 
