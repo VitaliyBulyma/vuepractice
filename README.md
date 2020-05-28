@@ -20,3 +20,5 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 [] Lesson 5
 
 [] Lesson 6
+
+[] Lesson 7
