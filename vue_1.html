@@ -1,15 +1,25 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Intro to v-bind</title>
-		<meta charset="UTF-8">
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<style>
-			.container{background:#cecece;}
-		</style>
-	</head>
-	<body>
-	
+
+<head>
+	<title>Intro to v-bind</title>
+	<meta charset="UTF-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.container {
+			background: #cecece;
+		}
+		.highlight {
+			border: 1px solid yellow;
+		}
+		#app{
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
 	<div id="app">
 		<!--
 		//step 1: open console
@@ -38,25 +48,27 @@
 			1. Create an image and set the following attributes with Vue {src, alt, title}
 			2. Augment the span below to include another class called "highlight", which has a yellow border.
 		-->
-		<span v-bind:class="loadClass">
+		<p v-bind:class="loadClass">
 			look at me!
-		</span>
+		</p>
+		<img v-bind:src="imgSrc"
+			v-bind:alt="imgAlt"
+			v-bind:title="imgTitle">
 	</div>
-	
+
 	<script>
-	var app = new Vue({
-		//Bind Vue object to HTML element through query selector
-		el: '#app',
-		data:{
-			loadClass : 'container',
-			//newStyle : 'font-size:30px;',
-			//newAlt : 'dynamically set alt!'
-			
-		}
-	});
-	
-	
-	
+		var app = new Vue({
+			//Bind Vue object to HTML element through query selector
+			el: document.querySelector('#app'),
+			data: {
+				loadClass : 'container highlight',
+				imgSrc:'img/bird-s-eye-view-photography-of-road-in-the-middle-of-desert-1201673.jpg',
+				imgAlt: 'bird-s-eye-view-photography-of-road-in-the-middle-of-desert',
+				imgTitle: 'bird-s-eye-view-photography-of-road-in-the-middle-of-desert'
+
+			}
+		});
 	</script>
-	</body>
+</body>
+
 </html>
