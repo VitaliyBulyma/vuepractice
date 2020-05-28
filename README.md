@@ -24,7 +24,36 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
   
 ````
   
-[] Lesson 2
+[x] Lesson 2
+
+  #### What I learned
+    - v-bind:<name of an HTML attribute>="<name of the variable>"
+
+    
+````JS
+		<p v-bind:class="loadClass">
+			look at me!
+		</p>
+		<img v-bind:src="imgSrc"
+			v-bind:alt="imgAlt"
+			v-bind:title="imgTitle">
+	</div>
+
+	<script>
+		var app = new Vue({
+			//Bind Vue object to HTML element through query selector
+			el: document.querySelector('#app'),
+			data: {
+				loadClass : 'container highlight',
+				imgSrc:'img/bird-s-eye-view-photography-of-road-in-the-middle-of-desert-1201673.jpg',
+				imgAlt: 'bird-s-eye-view-photography-of-road-in-the-middle-of-desert',
+				imgTitle: 'bird-s-eye-view-photography-of-road-in-the-middle-of-desert'
+
+			}
+		});
+	</script>
+  
+````
   
 [] Lesson 3
 
