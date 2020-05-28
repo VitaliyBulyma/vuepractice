@@ -9,7 +9,7 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 # My Progress
 [x] Lesson 1
   #### What I learned
-    - App
+    - Need to include vue.js file to work: <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   
 [] Lesson 2
   
