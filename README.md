@@ -13,7 +13,7 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
     - Use this syntax to introduce variable message - {{message}}
     - Craeate a new instance of Vue, and pass options el: which is an element selected, and data: which contains the variables
     
-````
+````JS
     	var app = new Vue({
 		el: '#app',
 		data:{
