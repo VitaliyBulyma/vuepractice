@@ -11,6 +11,17 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
   #### What I learned
     - Need to include vue.js file to work: <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     - Use this syntax to introduce variable message - {{message}}
+    - Craeate a new instance of Vue, and pass options el: which is an element selected, and data: which contains the variables
+    
+````
+    	var app = new Vue({
+		el: '#app',
+		data:{
+			message: 'Do not go gently into that good night'	
+		}
+	});
+  
+````
   
 [] Lesson 2
   
