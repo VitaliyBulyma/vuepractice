@@ -10,6 +10,7 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 [x] Lesson 1
   #### What I learned
     - Need to include vue.js file to work: <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    - Use this syntax to introduce variable message - {{message}}
   
 [] Lesson 2
   
