@@ -1,3 +1,5 @@
+# HTTP-5302-0NA Instructor: Christine Bittle
+
 # Read the documentation!
 Follow along with the [official documentation for Vue.js](https://vuejs.org/v2/guide/)
 
@@ -140,7 +142,11 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 
 ````
 
-[] Lesson 5
+[x] Lesson 5
+
+#### What I learned
+
+   - Loops in Vue.js
 
 [] Lesson 6
 
