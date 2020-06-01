@@ -1,42 +1,90 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>v-if If Statements</title>
-		<meta charset="UTF-8">
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<style>
-			.special {background:yellow; border: 1px dotted #fe0000; padding:30px; display:block; text-align:center;}
-			.important {font-weight:bold; font-size:30px;}
-		</style>
-	</head>
-	<body>
-	
-	<div id="app">
-		<span v-if="profile">
-			Profile of {{profile.fname}} {{profile.lname}} 
-		</span>
-		<span v-else>
-			No Profile Data found.
-		</span>
-	</div>
-	
-	<script>
-	var app = new Vue({
-		el: '#app',
-		
-		data:{
-			/*
-			profile:{
-				fname: "John",
-				lname: "Doe"	
-			}
-			*/
-		}
-		
-	});
+
+<head>
+	<title>v-if If Statements</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 	</script>
-	
-		<!--
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.special {
+			background: yellow;
+			border: 1px dotted #fe0000;
+			padding: 30px;
+			display: block;
+			text-align: center;
+		}
+
+		.important {
+			font-weight: bold;
+			font-size: 30px;
+		}
+		.card, h2{
+			margin-left: 20px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div id="app">
+		<h2>Card</h2>
+		<div class="card" style="width: 18rem;">
+			<!-- http://www.newdesignfile.com/post_generic-profile-icon_352861/ -->
+			<div v-if="profile.imgSrc">
+				<img class="card-img-top" v-bind:src="profile.imgSrc" v-bind:alt="'Photo of '+profile.fname +' '+ profile.lname">
+			</div>
+			<div v-else>
+				<img class="card-img-top" src="img/generic-facebook-profile_352867.png" alt="Generic icon representing human">
+			</div>
+			
+			<div class="card-body">
+				<div class="container">
+					<div class="alert alert-success" v-if="profile.fname">First name: {{profile.fname}}</div>
+					<div class="alert alert-danger" v-else>First name not found</div>
+
+					<div class="alert alert-success" v-if="profile.lname"> Last name: {{profile.lname}}</div>
+					<div class="alert alert-danger" v-else>Last name not found</div>
+
+				</div>
+				<h5>Bio:</h5>
+					<p class="card-text" v-if="profile.bio">{{profile.bio}}</p>
+					<p class="card-text" v-else-if="profile.bio === ''">Author did not write bio</p>
+					<p class="card-text" v-else>Profile bio is not available</p>
+				<div v-if="profile.link">
+					<a  v-bind:href="profile.link" target="_blanc" class="btn btn-primary">Visit Store</a>
+				</div>
+				<div v-else>
+					<h6>No link provided</h6>
+					<a  href="google.com" target="_blanc" class="btn btn-primary">Search Google</a>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+
+			data: {
+
+				profile: {
+					fname: "John",
+					lname: "Doe",
+					bio: "Inventor, co-founder of \"Jane Doe Tractors\" manufacturer, famous worldwide for it is quality",
+					imgSrc: "img/img_avatar.png",
+					link: "https://www.deere.com/en/"
+				}
+			}
+		});
+	</script>
+
+	<!--
 		//step 1: Read Code Above
 		//step 2: Does the profile show up?
 		
@@ -56,5 +104,6 @@
 			(Something like this https://www.w3schools.com/howto/howto_css_cards.asp)
 		3. Write conditionals if information is missing (i.e. 'no bio available' if bio is blank, generic image if no pic is found)
 		-->
-	</body>
+</body>
+
 </html>
