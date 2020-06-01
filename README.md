@@ -148,6 +148,8 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 
     - Loops in Vue.js
     
+    - Structure of object with arrays and array of obects inside array
+    
 ````Vue
 
 <ul>
@@ -169,7 +171,18 @@ data:{
 }
 
 ````
+````Vue
+var temp ={
+	character:'MACBETH',
+		dialogue:[
+			{line:"Prithee, peace:"},
+			{line:"I dare do all that may become a man;"},
+			{line:"Who dares do more is none."}
+			]
+	};
+app.scene.push(temp);
 
+````
 [] Lesson 6
 
 [] Lesson 7
