@@ -99,6 +99,9 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 #### What I learned
 
     - If else statements
+    		v-if="boolean_expression"
+		v-else-if="boolean_expression"
+		v-else
     
    
 ````JavaScript
