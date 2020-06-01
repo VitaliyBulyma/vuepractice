@@ -94,7 +94,41 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
   
 ````
 
-[] Lesson 4
+[x] Lesson 4
+
+#### What I learned
+
+    - If else statements
+    
+   
+````JavaScript
+
+	<div id="app">
+		<span v-if="profile">
+			Profile of {{profile.fname}} {{profile.lname}} 
+		</span>
+		<span v-else>
+			No Profile Data found.
+		</span>
+	</div>
+	
+	<script>
+	var app = new Vue({
+		el: '#app',
+		
+		data:{
+			
+			profile:{
+				fname: "John",
+				lname: "Doe"	
+			}
+			
+		}
+		
+	});
+	</script>
+
+````
 
 [] Lesson 5
 
