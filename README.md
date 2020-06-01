@@ -133,6 +133,13 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 
 ````
 
+````Vue
+	<p class="card-text" v-if="profile.bio">{{profile.bio}}</p>
+	<p class="card-text" v-else-if="profile.bio === ''">Author did not write bio</p>
+	<p class="card-text" v-else>Profile bio is not available</p>
+
+````
+
 [] Lesson 5
 
 [] Lesson 6
