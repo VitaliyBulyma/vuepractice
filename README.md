@@ -146,7 +146,29 @@ You have a weekly reflection for HTTP5302. If you aren't sure what to talk about
 
 #### What I learned
 
-   - Loops in Vue.js
+    - Loops in Vue.js
+    
+````Vue
+
+<ul>
+	<li v-for="part in scene">
+		<span>{{part.character}}</span>
+		<p>{{part.dialogue}}</p>
+	</li>
+</ul>
+
+data:{
+//Scene from http://shakespeare.mit.edu/macbeth/macbeth.1.7.html
+	scene:[
+		{character:'MACBETH', dialogue:"Hath he ask'd for me?"},
+		{character:'LADY MACBETH', dialogue:"Know you not he has?"},
+		{character:'MACBETH', dialogue:"We will proceed no further in this business:\nHe hath honour'd me of late; and I have bought\nGolden opinions from all sorts of people,\nWhich would be worn now in their newest gloss,\nNot cast aside so soon."},
+		{character:'LADY MACBETH', dialogue:"Was the hope drunk\nWherein you dress'd yourself? hath it slept since?\nAnd wakes it now, to look so green and pale\nAt what it did so freely? From this time\nSuch I account thy love. Art thou afeard\nTo be the same in thine own act and valour\nAs thou art in desire? Wouldst thou have that\nWhich thou esteem'st the ornament of life,\nAnd live a coward in thine own esteem,\nLetting 'I dare not' wait upon 'I would,'\nLike the poor cat i' the adage?"}	
+	]
+
+}
+
+````
 
 [] Lesson 6
 
