@@ -7,13 +7,25 @@
 		<style>
 			.box{width:200px; height:200px; background:green; border:2px solid black; text-align:center; line-height:200px; color:white;}
 			.hidden{display:none;}
+			.red-box{
+				width: 100px;				
+				background-color: red;
+				}
+
+
 		</style>
 	</head>
 	<body>
 	
 	<div id="app">
-		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>
-		<button v-on:click="showhide();">Click</button>
+		<div v-bind:style="{height : y + 'px'}" class="red-box"
+			v-on:mouseover="growBox();"
+			v-on:click="shrinkBox();"
+			v-on:click.right.prevent="rightClick();" >
+		</div>
+		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>		
+		<button v-on:click="showhide();">{{buttonText}}</button>
+		
 	</div>
 	
 	<script>
@@ -22,17 +34,33 @@
 		
 		data:{
 			boxHeight:200,
-			boxHidden : false,
-			message  : 'Make me disappear!'
+			boxHidden  : false,
+			message    : 'Make me disappear!',
+			buttonText : 'Hide',
+			y          : 100
 		},
 		methods:{
 			showhide : function(){
 				console.log(this.boxHidden);
 				if(this.boxHidden){
 					this.boxHidden=false;
+					this.buttonText='Hide'
+					
 				}else{
-					this.boxHidden=true;	
+					this.boxHidden=true;
+					this.buttonText='Show';	
 				}
+			},
+			growBox : function (){
+				// console.log('You hovered, great success');
+				this.y+=10;
+				// console.log(this.y);
+			},
+			shrinkBox : function (){
+				this.y-=10;
+			},
+			rightClick : function(){
+				alert("What are you trying to do here?");
 			}
 		}
 		
