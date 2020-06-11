@@ -196,22 +196,9 @@ app.scene.push(temp);
 			v-on:click.right.prevent="rightClick();" >
 		</div>
 
-<div id="app">
-		<div class="red-box"></div>
-		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>		
-		<button v-on:click="showhide();">Click</button>
-		
-	</div>
-	
-	<script>
-	var app = new Vue({
-		el: '#app',
-		
-		data:{
-			boxHeight:200,
-			boxHidden : false,
-			message  : 'Make me disappear!'
-		},
+----------------------------		
+		<button v-on:click="showhide();">Click</button>	
+
 		methods:{
 			showhide : function(){
 				console.log(this.boxHidden);
@@ -221,10 +208,7 @@ app.scene.push(temp);
 					this.boxHidden=true;	
 				}
 			}
-		}
-		
-	});
-	</script>
+
 
 ````
 
