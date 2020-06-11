@@ -185,8 +185,17 @@ app.scene.push(temp);
 		There must be a matching method name inside the "methods" property, which is a sibling to the "data" property.
 		You can pass in extra information with optional parameters if you wish
 		"this" will evaluate to the app object when used in the context of a method.
+		
+		can chain v-on events, order of events does matter
 
-````JS
+````JavaScript
+
+		<div v-bind:style="{height : y + 'px'}" class="red-box"
+			v-on:mouseover="growBox();"
+			v-on:click="shrinkBox();"
+			v-on:click.right.prevent="rightClick();" >
+		</div>
+
 <div id="app">
 		<div class="red-box"></div>
 		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>		
