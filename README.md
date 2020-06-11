@@ -212,4 +212,68 @@ app.scene.push(temp);
 
 ````
 
-[] Lesson 7
+[x] Lesson 7
+
+#### What I learned
+
+	reusable components
+	Each component can be customized with the use of "props" (properties).
+	The Markup scaffolding is included in the template.	
+	The components can have methods as well! The prompt function also can change the component properties	
+	Components may also have a data property, just like the app.
+
+````JavaScript
+
+<div id="app">
+		<orb v-bind:radius="40" v-bind:color="'white'"></orb>
+		<orb 
+			v-for="orb in orbs"
+			v-bind:radius="orb.radius"
+			v-bind:color="orb.color"
+			v-bind:left="orb.left"
+			v-bind:top="orb.top"
+			v-bind:key="orb.id">
+		</orb>
+	</div>
+	
+	<script>
+	Vue.component('orb',{
+		props:['radius','color','left', 'top'],	
+		template:
+		`<span 
+			v-bind:class="'circle'" 
+			v-bind:style="{'width':radius+'px', 'height':radius+'px', 'background':color, 'left':left+'px','top':top+'px'}"
+			v-on:click="prompt();">
+		</span>`,
+		methods:{
+			prompt:function(){
+				alert('You clicked the '+this.color+' circle!');
+				console.log(this.top);	
+				this.color='none';
+			}	
+		}
+	
+	});
+	
+	var app = new Vue({
+		el: '#app',
+	
+		data:{
+			
+			orbs:
+			[
+				{id:1, radius:10, color:'green', top:56, left:100},
+				{id:2, radius:15, color:'purple', top: 40, left:300},
+				{id:3, radius:20, color:'black',top: 140, left:200},
+				{id:4, radius:25, color:'blue',top: 340, left:800},
+				{id:5, radius:30, color:'orange',top: 220, left:100},
+				{id:6, radius:35, color:'yellow',top: 540, left:20},
+				{id:7, radius:45, color:'red',top: 75, left:654}
+			],
+
+		}
+	});
+	</script>
+````
+
+
