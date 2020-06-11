@@ -175,6 +175,48 @@ var temp ={
 app.scene.push(temp);
 
 ````
-[] Lesson 6
+[x] Lesson 6
+
+#### What I learned
+
+		v-on:event_handler="method_name(?arg1, ?arg2..)"
+		
+		You can use v-on to attach events directly to elements, similar to regular HTML and JS
+		There must be a matching method name inside the "methods" property, which is a sibling to the "data" property.
+		You can pass in extra information with optional parameters if you wish
+		"this" will evaluate to the app object when used in the context of a method.
+
+````JS
+<div id="app">
+		<div class="red-box"></div>
+		<div v-bind:class="{box:true, hidden:boxHidden}">{{message}}</div>		
+		<button v-on:click="showhide();">Click</button>
+		
+	</div>
+	
+	<script>
+	var app = new Vue({
+		el: '#app',
+		
+		data:{
+			boxHeight:200,
+			boxHidden : false,
+			message  : 'Make me disappear!'
+		},
+		methods:{
+			showhide : function(){
+				console.log(this.boxHidden);
+				if(this.boxHidden){
+					this.boxHidden=false;
+				}else{
+					this.boxHidden=true;	
+				}
+			}
+		}
+		
+	});
+	</script>
+
+````
 
 [] Lesson 7
