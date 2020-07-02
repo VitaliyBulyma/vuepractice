@@ -1,4 +1,7 @@
 # HTTP-5302-0NA Instructor: Christine Bittle
+
+## Game created using Vue.js Framework (index.html)
+
 ![BattleShip Gameboard](/img/battleship.jpeg)
 # My Progress
 [x] Lesson 1
