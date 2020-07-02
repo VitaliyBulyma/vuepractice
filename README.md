@@ -1,5 +1,5 @@
 # HTTP-5302-0NA Instructor: Christine Bittle
-
+![BattleShip Gameboard](/img/battleship.jpg)
 # My Progress
 [x] Lesson 1
   #### What I learned
