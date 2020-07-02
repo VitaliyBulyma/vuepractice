@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Vue Components</title>
+		<meta charset="UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+            .square{
+                box-sizing: border-box;
+                border: 1px solid white;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                position: absolute;
+                
+            }
+            .output{
+                display: flex;
+            }
+            #message{                
+                /* border: 1px solid orange; */
+                width: 200px;
+                height: 20px;
+            }
+            #counter{              
+                /* border: 1px solid orange; */
+                width: 100px;
+                height: 20px;
+            }
+            #hitcount{
+                margin-left: 10px;
+                width: 100px;
+                height: 20px;
+            }
+		</style>
+	</head>
+	<body>
+	
+	<div id="app">
+        <p id="rules">Game Rules: You have <span id="counter">10</span> shots to win the game. There are <span id="hitcount">0 </span> ships on the board</p>
+        <div class="output">
+            <div id="message" >Make your move</div>
+            <!-- <div> Hits<span id="hitcount">0</span></div> -->
+            <div><button style="margin-left: 20px;" onclick="location.reload();">Reset</button>
+            <button style="margin-left: 20px;" onclick="hideColors();">Hide</button></div>
+        </div>
+     
+        <tile        
+        v-for="tile in tiles"
+            v-bind:name="tile.name"
+            v-bind:id="tile.id"            
+            v-bind:left="tile.left"
+            v-bind:color="tile.color"
+            v-bind:top="tile.top"
+            v-bind:key="tile.id">
+        </tile>
+        <field        
+            v-for="field in fields"
+            v-bind:value="field.name"            
+            v-bind:left="field.left"
+            v-bind:color="field.color"
+            v-bind:top="field.top"
+            v-bind:key="field.id">
+        </field>
+
+	</div>
+	
+	<script>
+    var ships= [];
+    function hideColors(){
+        var tiles=document.getElementsByName("tile");
+        // console.log(tiles[0]);
+        for(var i=0; i<tiles.length; i++){
+            tiles[i].style.background="grey";
+        }
+        
+    }
+    Vue.component('tile',{
+        props:['id','left','top','color','name'],
+        template:
+        `
+        <span
+            v-bind:name="name" 
+            v-bind:id="id"
+			v-bind:class="'square'" 
+			v-bind:style="{'background':color,'left':left+'px','top':top+'px'}"
+            v-on:click="prompt();"
+            v-on:click.right.prevent="rightClick();"> 
+            
+            </span>`,
+           
+        methods:{         
+
+            // data: function(){
+            //     return {ships:["MEssage"]}
+            // },
+            rightClick:
+                
+                function(){
+                var hitcounterDiv = document.getElementById('hitcount');         
+                var hitcounter =parseInt(document.getElementById('hitcount').innerText);
+                hitcounter++;
+                hitcounterDiv.innerText = hitcounter;
+                this.color="black";
+                // alert(this.id);                
+                                
+                ships.push(this.id);
+                // console.log(ships);
+                // console.log(ships);
+                
+            },
+            prompt:function(){  
+                var mess = document.getElementById('message'); 
+                var rules = document.getElementById('rules');            
+                var counterDiv = document.getElementById('counter');             
+                var counter =parseInt(document.getElementById('counter').innerText) ;
+                counter--;                    
+                var hitcounterDiv = document.getElementById('hitcount');         
+                var hitcounter =parseInt(document.getElementById('hitcount').innerText);
+                if (counter<0){
+                    rules.innerText="All moves are used, you lost the game!";
+                }
+               
+               
+                if (!(ships.includes(this.id))){
+                    mess.innerText="Missed";
+                    counterDiv.innerText=counter;
+                }else{
+                   this.color='red';
+                   mess.innerText="Hit";
+                   counterDiv.innerText=counter;
+                   hitcounter--;
+                   hitcounterDiv.innerText = hitcounter;
+                   if(hitcounter===0 && counter>0){
+                       mess.innerText="Game Completed!  You won the game!"
+                   }
+                }
+            } 
+        }
+    });
+    Vue.component('field',{
+        props:['name','left','top','color'],
+        template:
+        `
+        <input type="text" 
+            v-bind:value = "name"
+			v-bind:class="'square'" 
+            v-bind:style="{'background':color,'left':left+'px','top':top+'px'}"/>          
+            `,
+        methods:{
+
+        }
+    });
+
+	
+	var app = new Vue({
+		el: '#app',
+       
+		data:{
+            
+            fields:[
+                {name:'A', color:'yellow', top: 100, left:100},
+                {name:'B', color:'yellow', top: 100, left:140},
+                {name:'C', color:'yellow', top: 100, left:180},
+                {name:'D', color:'yellow', top: 100, left:220},
+                {name:'1', color:'yellow', top: 140, left:60},
+                {name:'2', color:'yellow', top: 180, left:60},
+                {name:'3', color:'yellow', top: 220, left:60},
+                {name:'4', color:'yellow', top: 260, left:60},
+            ],
+			tiles:[
+                
+                {id:1, name:'tile', color:'grey',  top: 140, left:100},
+				{id:2, name:'tile', color:'grey',  top: 140, left:140},
+				{id:3, name:'tile', color:'grey',  top: 140, left:180},
+				{id:4, name:'tile', color:'grey',  top: 140, left:220},
+                {id:5, name:'tile', color:'grey',  top: 180, left:100},
+				{id:6, name:'tile', color:'grey',  top: 180, left:140},
+				{id:7, name:'tile', color:'grey',  top: 180, left:180},
+				{id:8, name:'tile', color:'grey',  top: 180, left:220},
+                {id:9, name:'tile', color:'grey',  top: 220, left:100},
+				{id:10, name:'tile', color:'grey', top: 220, left:140},
+				{id:11, name:'tile', color:'grey', top: 220, left:180},
+				{id:12, name:'tile', color:'grey', top: 220, left:220},
+                {id:13, name:'tile', color:'grey', top: 260, left:100},
+				{id:14, name:'tile', color:'grey', top: 260, left:140},
+				{id:15, name:'tile', color:'grey', top: 260, left:180},
+				{id:16, name:'tile', color:'grey', top: 260, left:220}
+
+            ],
+
+		}
+	});
+	</script>
+
+	</body>
+</html>
